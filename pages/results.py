@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.title("📊 Security Analysis Dashboard")
+st.title("Security Analysis Dashboard")
 
 # ---------- Styling ----------
 st.markdown("""
@@ -52,7 +52,7 @@ else:
     left, mid, right = st.columns([1,4,1])
 
     with mid:
-        st.subheader("🔍 Basis Comparison Table")
+        st.subheader("Basis Comparison Table")
         df = pd.DataFrame(rows)
         st.table(df)
 
@@ -125,10 +125,10 @@ else:
             st.metric("Eve Mode", "ON 😈" if eve_used else "OFF ✅")
 
         with x2:
-            st.metric("Noise Mode", "ON 📡" if noise_used else "OFF ✅")
+            st.metric("Noise Mode", "ON" if noise_used else "OFF ✅")
 
         # ---------- Final Key ----------
-        st.markdown("### 🔐 Final Secret Key")
+        st.markdown("### Final Secret Key")
 
         a, b = st.columns(2)
 
@@ -142,11 +142,8 @@ else:
         csv = df.to_csv(index=False).encode("utf-8")
 
         st.download_button(
-            "📥 Download Results CSV",
+            "Download Results CSV",
             data=csv,
             file_name="bb84_results.csv",
             mime="text/csv"
         )
-
-        if alice_key == bob_key and alice_key != "":
-            st.balloons()

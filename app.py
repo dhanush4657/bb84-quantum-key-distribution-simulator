@@ -4,7 +4,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="BB84 Quantum Security System",
-    page_icon="🔐",
+    page_icon=":material/shield_lock:",
     layout="wide"
 )
 
@@ -64,26 +64,32 @@ overflow:hidden;
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🔐 BB84 Quantum Key Distribution")
+st.title(":material/shield_lock: BB84 Quantum Key Distribution")
 st.subheader("Elite Secure Communication Simulator")
 
 st.markdown("---")
 
-c1,c2,c3 = st.columns(3)
+left_space, main, right_space = st.columns([1,5,1])
 
-with c1:
-    st.metric("Alice", "👩 Sender")
+with main:
+    c1, c2, c3 = st.columns(3)
 
-with c2:
-    st.metric("Bob", "👨 Receiver")
+    with c1:
+        st.image("assets/alice.png", width=150)
+        st.metric("Alice", "Sender")
 
-with c3:
-    st.metric("Eve", "😈 Optional")
+    with c2:
+        st.image("assets/bob.png", width=150)
+        st.metric("Bob", "Receiver")
+
+    with c3:
+        st.image("assets/eve.png", width=150)
+        st.metric("Eve", "Optional")
 
 st.markdown("---")
 
 st.markdown("""
-### 🚀 Protocol Workflow
+### Protocol Workflow
 
 ✅ Alice creates secret bits and bases  
 ✅ Qubits are generated and transmitted  

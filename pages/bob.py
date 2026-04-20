@@ -4,7 +4,16 @@ import streamlit as st
 import random
 from core.qiskit_mode import measure_qubit
 
-st.title("👨 Bob Receiving Station")
+col1, col2 = st.columns([1,8], vertical_alignment="center")
+
+with col1:
+    st.image("assets/bob.png", width=70)
+
+with col2:
+    st.markdown(
+        "<h1 style='margin:0; padding-top:10px;'>Bob Receiving Station</h1>",
+        unsafe_allow_html=True
+    )
 
 if "alice_qubits" not in st.session_state:
     st.warning("Complete Alice step first.")
@@ -29,10 +38,10 @@ else:
         )
 
     with c2:
-        noise_on = st.toggle("📡 Channel Noise")
+        noise_on = st.toggle("Channel Noise")
 
     eve_on = st.toggle("😈 Enable Eve Attack")
-    qiskit_on = st.toggle("⚛️ Qiskit Real Quantum Mode")
+    qiskit_on = st.toggle("Qiskit Real Quantum Mode")
 
     # ---------- Basis Input ----------
     if basis_mode == "Manual Entry":
@@ -79,7 +88,7 @@ else:
         return q
 
     # ---------- Run ----------
-    if st.button("📥 Receive & Measure"):
+    if st.button("Receive & Measure"):
 
         bob_bases = bob_bases.strip().upper()
 
@@ -138,7 +147,7 @@ else:
             with m3:
                 st.metric("X Bases", bob_bases.count("X"))
 
-            st.markdown("### 📄 Bob Output")
+            st.markdown("### Bob Output")
 
             st.info(f"Bases: {bob_bases}")
             st.info(f"Measured Bits: {''.join(map(str, results))}")
@@ -147,7 +156,7 @@ else:
                 st.error("⚠️ Eve Intercepted Transmission")
 
             if noise_on:
-                st.warning("📡 Noise Applied")
+                st.warning("Noise Applied")
 
             if qiskit_on:
-                st.success("⚛️ Measured using Qiskit Quantum Circuits")
+                st.success("Measured using Qiskit Quantum Circuits")

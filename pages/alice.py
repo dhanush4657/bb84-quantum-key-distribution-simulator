@@ -1,7 +1,16 @@
 import streamlit as st
 import random
 
-st.title("👩 Alice Control Center")
+col1, col2 = st.columns([1,8], vertical_alignment="center")
+
+with col1:
+    st.image("assets/alice.png", width=70)
+
+with col2:
+    st.markdown(
+        "<h1 style='margin:0; padding-top:10px;'>Alice Control Center</h1>",
+        unsafe_allow_html=True
+    )
 
 st.markdown("## Create Quantum Transmission")
 
@@ -44,7 +53,7 @@ else:
     st.info(f"Generated Bases: {bases}")
 
 # ---------- GENERATE ----------
-if st.button("🚀 Generate Transmission"):
+if st.button("Generate Transmission"):
 
     bits = bits.strip()
     bases = bases.strip().upper()
@@ -78,5 +87,5 @@ if st.button("🚀 Generate Transmission"):
 
         st.success("Quantum transmission prepared.")
 
-        st.markdown("### 📡 Qubits Ready to Send")
+        st.markdown("### Qubits Ready to Send")
         st.code("   ".join(qubits))
